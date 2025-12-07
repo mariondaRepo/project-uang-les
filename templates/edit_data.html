@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Data</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Kita pakai style container yang sama biar konsisten */
+        .container { max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #4CAF50; margin-bottom: 20px; }
+        
+        /* Merapikan form otomatis Django */
+        p { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #333; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        
+        .btn-save { background-color: #4CAF50; color: white; padding: 12px 20px; border: none; width: 100%; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        .btn-save:hover { background-color: #45a049; }
+        .btn-cancel { display: block; text-align: center; margin-top: 15px; text-decoration: none; color: #666; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Edit Data Laporan</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn-save">Simpan Perubahan</button>
+        </form>
+        
+        <a href="{% url 'home' %}" class="btn-cancel">Batal</a>
+    </div>
+
+</body>
+</html>
